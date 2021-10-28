@@ -21,21 +21,20 @@ namespace autenticacao_jwt.Services
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Sid, funcionario.Id.ToString()),
-                    new Claim(ClaimTypes.GivenName, funcionario.Matricula),
+                    new Claim("Id", funcionario.Id.ToString()),
+                    new Claim("Matricula", funcionario.Matricula),
                     new Claim(ClaimTypes.Name, funcionario.Nome),
                     new Claim(ClaimTypes.Role, cargoRepositorio.ObterPorId(funcionario.IdCargo).Nome)
                 }),
-                Expires = DateTime.UtcNow.AddHours(5),
+                Expires = DateTime.UtcNow.AddHours(8),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
 
-            var securityToken = tokenHandler.CreateToken(tokenDescriptor);
-            var token = tokenHandler.WriteToken(securityToken);
+            var token = tokenHandler.CreateToken(tokenDescriptor);
 
             StringBuilder tokenResult = new StringBuilder();
             tokenResult.Append("{\n\t AccessToken: ");
-            tokenResult.Append(token);
+            tokenResult.Append(tokenHandler.WriteToken(token));
             tokenResult.Append("\n\t Expiration : ");
             tokenResult.Append(DateTime.UtcNow.AddHours(5).ToString("yyyy-MM-dd HH:mm:ss"));
             tokenResult.Append("\n}");

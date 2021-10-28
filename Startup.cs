@@ -74,8 +74,8 @@ namespace AUTENTICACAO_JWT
                 .AllowAnyMethod()
                 .AllowAnyHeader());
 
-            app.UseAuthorization();
             app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoint => 
             {

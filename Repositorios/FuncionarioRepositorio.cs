@@ -20,5 +20,11 @@ namespace autenticacao_jwt.Repositorios
         {
             return _db.Funcionarios.ToList();
         }
+
+        public void Inserir(Funcionario funcionario)
+        {
+            _db.Funcionarios.Add(funcionario);
+            _db.SaveChanges();
+        }
     }
 }

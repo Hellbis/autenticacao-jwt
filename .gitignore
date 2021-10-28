@@ -1,0 +1,5 @@
+.vscode/
+bin/
+Database/empresa.db
+Migrations/
+obj/
