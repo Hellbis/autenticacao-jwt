@@ -8,7 +8,7 @@ using autenticacao_jwt.Context;
 namespace AUTENTICACAO_JWT.Migrations
 {
     [DbContext(typeof(EmpresaContext))]
-    [Migration("20211027032233_Initial")]
+    [Migration("20211028004821_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,6 +35,11 @@ namespace AUTENTICACAO_JWT.Migrations
                         {
                             Id = 1,
                             Nome = "ADMINISTRADOR"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Nome = "FUNCIONARIO"
                         });
                 });
 

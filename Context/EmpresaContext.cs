@@ -26,6 +26,13 @@ namespace autenticacao_jwt.Context
                         Nome = "ADMINISTRADOR"
                     }
                 );
+            modelBuilder.Entity<Cargo>()
+                .HasData(
+                    new Cargo{
+                        Id = 2,
+                        Nome = "FUNCIONARIO"
+                    }
+                );
 
             modelBuilder.Entity<Funcionario>()
                 .HasData(

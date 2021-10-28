@@ -1,4 +1,5 @@
 using System.Security.Cryptography;
+using Microsoft.Extensions.Configuration;
 using System.Text;
 
 namespace autenticacao_jwt.Util
@@ -19,5 +20,8 @@ namespace autenticacao_jwt.Util
 
             return result.ToString();
         }
+
+        public static string SecrectJwt() =>
+            new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("Secrect").Value;
     }
 }

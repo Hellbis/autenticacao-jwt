@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using autenticacao_jwt.Context;
 using autenticacao_jwt.Models;
@@ -15,5 +16,9 @@ namespace autenticacao_jwt.Repositorios
             return obj;
         }
 
+        public List<Funcionario> Listar()
+        {
+            return _db.Funcionarios.ToList();
+        }
     }
 }

@@ -33,6 +33,11 @@ namespace AUTENTICACAO_JWT.Migrations
                         {
                             Id = 1,
                             Nome = "ADMINISTRADOR"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Nome = "FUNCIONARIO"
                         });
                 });
 

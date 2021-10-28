@@ -47,6 +47,11 @@ namespace AUTENTICACAO_JWT.Migrations
                 values: new object[] { 1, "ADMINISTRADOR" });
 
             migrationBuilder.InsertData(
+                table: "Cargos",
+                columns: new[] { "Id", "Nome" },
+                values: new object[] { 2, "FUNCIONARIO" });
+
+            migrationBuilder.InsertData(
                 table: "Funcionarios",
                 columns: new[] { "Id", "IdCargo", "Matricula", "Nome", "Senha" },
                 values: new object[] { 1, 1, "0001", "Administrador", "4afcb778263838fb53840ab963b72fd8" });

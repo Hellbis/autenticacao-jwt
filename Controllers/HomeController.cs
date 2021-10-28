@@ -15,8 +15,7 @@ namespace AUTENTICACAO_JWT.Controllers
         {
             try
             {
-                var token = new AuthenticateService().handle(funcionario);
-                return Ok(token);
+                return Ok(new AuthenticateService().handle(funcionario));
             }
             catch(Exception e)
             {
