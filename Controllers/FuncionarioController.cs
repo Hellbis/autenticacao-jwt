@@ -12,6 +12,20 @@ namespace autenticacao_jwt.Controllers
     [Route("api/[controller]")]
     public class FuncionarioController : ControllerBase
     {
+        [HttpGet("obter")]
+        [Authorize]
+        public IActionResult ObterPorMatricula([FromQuery] string matricula)
+        {
+            try
+            {
+                return Ok(new ObterPorMatriculaFuncionarioService().handle(matricula));
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
         [HttpGet]
         [Authorize]
         public IActionResult Listar()
@@ -47,8 +61,23 @@ namespace autenticacao_jwt.Controllers
         {
             try
             {
-                new InserirFuncionarioService().handle(funcionario);
-                return StatusCode(201, "Usuário criado com sucesso!");
+                new AlterarFuncionarioService().handle(funcionario);
+                return StatusCode(200, "Usuário alterado com sucesso!");
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        [Authorize(Roles = "ADMINISTRADOR")]
+        public IActionResult Deletar(int id)
+        {
+            try
+            {
+                new DeletarFuncionarioService().handle(id);
+                return StatusCode(200, "Usuário deletado com sucesso!");
             }
             catch(Exception e)
             {
